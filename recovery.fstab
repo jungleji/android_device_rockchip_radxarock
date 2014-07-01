@@ -1,10 +1,17 @@
-# mount point	fstype    device    	[device2]
-
-/boot       mtd         boot
-/cache      yaffs2      cache
-/data       yaffs2      userdata
-/misc       mtd         misc
-/recovery   mtd         recovery
-/sdcard     vfat        /dev/block/mmcblk0p1        /dev/block/mmcblk0
-/system     yaffs2      system
-/sd-ext     ext4        /dev/block/mmcblk0p2
+# Android fstab file.
+#<src>                                       <mnt_point>         <type>    <mnt_flags and options>       <fs_mgr_flags>
+/dev/block/mtd/by-name/user                  /mnt/internal_sd     vfat            defaults                  defaults
+/dev/block/mmcblk0                           /mnt/external_sd     vfat            defaults                  defaults
+/dev/block/mtd/by-name/system                /system              ext4            defaults                  defaults
+/dev/block/mtd/by-name/cache                 /cache               ext4            defaults                  defaults
+/dev/block/mtd/by-name/metadata              /metadata            ext4            defaults                  defaults
+/dev/block/mtd/by-name/userdata              /data                ext4            defaults                  defaults
+/dev/block/mtd/by-name/cust                  /cust                ext4            defaults                  defaults
+/dev/block/mtd/by-name/custom                /custom              ext4            defaults                  defaults
+misc                                         /misc                mtd             defaults                  defaults
+uboot                                        /uboot               mtd             defaults                  defaults
+charge                                       /charge              mtd             defaults                  defaults
+parameter                                    /parameter           mtd             defaults                  defaults
+boot                                         /boot                mtd             defaults                  defaults
+recovery                                     /recovery            mtd             defaults                  defaults
+backup                                       /backup              mtd             defaults                  defaults

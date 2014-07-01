@@ -1,0 +1,17 @@
+# Android fstab file.
+#<src>                                               <mnt_point>           <type>    <mnt_flags and options>     <fs_mgr_flags>
+/dev/block/platform/emmc/by-name/user                /mnt/internal_sd       vfat          defaults                 defaults
+/dev/block/mmcblk1                                   /mnt/external_sd       vfat          defaults                 defaults
+/dev/block/platform/emmc/by-name/system              /system                ext4          defaults                 defaults
+/dev/block/platform/emmc/by-name/cache               /cache                 ext4          defaults                 defaults
+/dev/block/platform/emmc/by-name/metadata            /metadata              ext4          defaults                 defaults
+/dev/block/platform/emmc/by-name/userdata            /data                  ext4          defaults                 defaults
+/dev/block/platform/emmc/by-name/cust                /cust                  ext4          defaults                 defaults
+/dev/block/platform/emmc/by-name/custom              /custom                ext4          defaults                 defaults
+/dev/block/platform/emmc/by-name/misc                /misc                  emmc          defaults                 defaults
+/dev/block/platform/emmc/by-name/uboot               /uboot                 emmc          defaults                 defaults
+/dev/block/platform/emmc/by-name/charge              /charge                emmc          defaults                 defaults
+/dev/block/platform/emmc/by-name/parameter           /parameter             emmc          defaults                 defaults
+/dev/block/platform/emmc/by-name/boot                /boot                  emmc          defaults                 defaults
+/dev/block/platform/emmc/by-name/recovery            /recovery              emmc          defaults                 defaults
+/dev/block/platform/emmc/by-name/backup              /backup                emmc          defaults                 defaults
