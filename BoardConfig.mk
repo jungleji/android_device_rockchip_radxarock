@@ -14,6 +14,7 @@ TARGET_CPU_VARIANT := cortex-a9
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_BOARD_PLATFORM_GPU := mali400
+TARGET_EXTRA_CFLAGS += $(call cc-option,-mtune=cortex-a9,$(call cc-option,-mtune=cortex-a8)) $(call cc-option,-mcpu=cortex-a9,$(call cc-option,-mcpu=cortex-a8))
 
 TARGET_BOOTLOADER_BOARD_NAME := radxarock
 
@@ -36,3 +37,6 @@ TARGET_ROCHCHIP_RECOVERY := true
 TARGET_RECOVERY_UI_LIB := librecovery_ui_${TARGET_PRODUCT}
 RECOVERY_BOARD_ID := false
 RECOVERY_UPDATEIMG_RSA_CHECK := false
+
+BOARD_EGL_CFG := vendor/rockchip/radxarock/proprietary/lib/egl/egl.cfg
+USE_OPENGL_RENDERER := true
