@@ -46,16 +46,30 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     device/rockchip/radxarock/install-recovery.sh:system/bin/install-recovery.sh \
+    device/rockchip/radxarock/audio_policy.conf:system/etc/audio_policy.conf \
 
 # HAL
 PRODUCT_PACKAGES += \
     hwcomposer.rk30board \
     power.rk30board \
 
+# Audio
+PRODUCT_PACKAGES += \
+    audio.primary.rk30board \
+    audio_policy.rk30board \
+    audio.alsa_usb.rk30board \
+    audio.a2dp.default \
+    audio.r_submix.default \
+    audio.usb.default \
+
 # Charger
 PRODUCT_PACKAGES += \
     charger \
     charger_res_images \
+
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
 
 $(call inherit-product, build/target/product/full_base.mk)
 
