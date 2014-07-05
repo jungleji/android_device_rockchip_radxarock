@@ -9,3 +9,5 @@ ro.debuggable=1
 
 video.use.overlay=1
 ro.sf.lcd_density=160
+
+wifi.interface=wlan0
