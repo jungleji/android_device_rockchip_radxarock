@@ -11,3 +11,4 @@ video.use.overlay=1
 ro.sf.lcd_density=160
 
 wifi.interface=wlan0
+ro.lockscreen.disable.default=true
