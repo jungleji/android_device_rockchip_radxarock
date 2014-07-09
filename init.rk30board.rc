@@ -3,12 +3,6 @@ import init.rk30board.usb.rc
 import init.${ro.hardware}.bootmode.${ro.bootmode}.rc
 import init.connectivity.rc
 
-on early-init
-    export SECOND_VOLUME_STORAGE /mnt/external_sd
-    mkdir /mnt/external_sd 0000 system system
-    export THIRD_VOLUME_STORAGE /mnt/usb_storage/USB_DISK0
-    mkdir /mnt/usb_storage 0755 system system
-
 on init
 
 loglevel 8
@@ -29,17 +23,23 @@ loglevel 8
     export HOST_STORAGE_DIRECTORY_EXTERN_4 /mnt/usb_storage/USB_DISK4
     export HOST_STORAGE_DIRECTORY_EXTERN_5 /mnt/usb_storage/USB_DISK5
 
-    export EXTERNAL_STORAGE /mnt/internal_sd
-    export EXTERNAL_STORAGE_FLASH /mnt/internal_sd
-    export EMULATED_STORAGE_SOURCE /mnt/internal_sd
+    export EXTERNAL_STORAGE /storage/sdcard0
+    export EXTERNAL_STORAGE_FLASH /storage/sdcard0
+    export EMULATED_STORAGE_SOURCE /storage/sdcard0
+
+    export SECOND_VOLUME_STORAGE /storage/sdcard1
+    export THIRD_VOLUME_STORAGE /mnt/usb_storage/USB_DISK0
+
+    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
+    mkdir /storage/sdcard0 0700 root root
+    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
+    mkdir /storage/sdcard1 0700 root root
+
+    mkdir /mnt/usb_storage 0755 system system
 
     mkdir /metadata 0770 root root
-    mkdir /mnt/internal_sd 0000 system system
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage/emulated 0555 root root
-
-    # Create private mountpoint so we can MS_MOVE from staging
-    mount tmpfs tmpfs /mnt/secure mode=0700,uid=0,gid=0
 
     # Directory for multi usb storage
     mkdir /mnt/usb_storage 0700 root system
@@ -61,7 +61,6 @@ on post-fs
     chown system net_bt_stack /data/gps
 
     mount rootfs rootfs / rw remount
-    mount tmpfs tmpfs /mnt/secure private rec
 
 on post-fs-data
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
@@ -116,6 +115,10 @@ on boot
 # Set this property so surfaceflinger is not started by system_init
     setprop system_init.startsurfaceflinger 0
 
+    symlink /mnt/media_rw/sdcard0 /mnt/internal_sd
+    symlink /mnt/media_rw/sdcard0 /mnt/sdcard
+    mount rootfs rootfs / ro remount
+
 service displayd /system/bin/displayd
     class main
     socket displayd stream 0660 root system
@@ -138,39 +141,42 @@ service drmservice /system/bin/drmservice
 # create virtual SD card at /mnt/sdcard, based on the /data/media directory
 # daemon will drop to user/group system/media_rw after initializing
 # underlying files in /data/media will be created with user and group media_rw (1023)
-service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
-    class main
-    
+service sdcard /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard0 /storage/sdcard0
+    class late_start
+
+service sdcard1 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard1 /storage/sdcard1
+    class late_start
+
 on property:selinux.reload_policy=1
     restart ueventd
     restart installd
 
-on property:ro.factory.hasUMS=false
-    symlink /storage/emulated/legacy /sdcard
-    symlink /storage/emulated/legacy /mnt/sdcard
-    symlink /storage/emulated/legacy /storage/sdcard0
-    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
-    mount rootfs rootfs / ro remount
+# on property:ro.factory.hasUMS=false
+#     symlink /storage/emulated/legacy /sdcard
+#     symlink /storage/emulated/legacy /mnt/sdcard
+#     symlink /storage/emulated/legacy /storage/sdcard0
+#     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
+#     mount rootfs rootfs / ro remount
 
-on property:ro.factory.hasUMS=cdrom
-    symlink /storage/emulated/legacy /sdcard
-    symlink /storage/emulated/legacy /mnt/sdcard
-    symlink /storage/emulated/legacy /storage/sdcard0
-    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
-    mount rootfs rootfs / ro remount
+# on property:ro.factory.hasUMS=cdrom
+#     symlink /storage/emulated/legacy /sdcard
+#     symlink /storage/emulated/legacy /mnt/sdcard
+#     symlink /storage/emulated/legacy /storage/sdcard0
+#     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
+#     mount rootfs rootfs / ro remount
 
-on property:ro.factory.hasUMS=true
-    symlink /mnt/internal_sd /sdcard
-    symlink /mnt/internal_sd /mnt/sdcard
-    symlink /mnt/internal_sd /storage/sdcard0
-    mount rootfs rootfs / ro remount
-    stop sdcard
+# on property:ro.factory.hasUMS=true
+#     symlink /mnt/internal_sd /sdcard
+#     symlink /mnt/internal_sd /mnt/sdcard
+#     symlink /mnt/internal_sd /storage/sdcard0
+#     mount rootfs rootfs / ro remount
+#     stop sdcard
     
-on property:ro.config.low_ram=true
-    write /sys/kernel/mm/ksm/pages_to_scan 100
-    write /sys/kernel/mm/ksm/sleep_millisecs 500
-    write /sys/kernel/mm/ksm/run 1
-    write /proc/sys/vm/page-cluster 0 
+# on property:ro.config.low_ram=true
+#     write /sys/kernel/mm/ksm/pages_to_scan 100
+#     write /sys/kernel/mm/ksm/sleep_millisecs 500
+#     write /sys/kernel/mm/ksm/run 1
+#     write /proc/sys/vm/page-cluster 0 
 
 # Binding fuse mount point to /storage/emulated/legacy
 #on property:init.svc.sdcard=running

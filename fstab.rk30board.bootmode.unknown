@@ -8,11 +8,5 @@
 /dev/block/mtd/by-name/metadata                 /metadata           ext4      noatime,nodiratime,nosuid,nodev,noauto_da_alloc,discard          wait
 /dev/block/mtd/by-name/userdata                 /data               ext4      noatime,nodiratime,nosuid,nodev,noauto_da_alloc,discard          wait,encryptable=/metadata/key_file
 
-/dev/block/mtd/by-name/user                    /mnt/internal_sd     vfat      defaults        voldmanaged=internal_sd:auto,noemulatedsd
-/devices/platform/rk29_sdmmc.0/mmc_host/mmc    /mnt/external_sd     vfat      defaults        voldmanaged=external_sd:auto
-/devices/platform/usb20               /mnt/usb_storage/USB_DISK0     vfat      defaults        voldmanaged=usb_storage:auto
-/devices/platform/usb20               /mnt/usb_storage/USB_DISK1     vfat      defaults        voldmanaged=usb_storage:auto
-/devices/platform/usb20               /mnt/usb_storage/USB_DISK2     vfat      defaults        voldmanaged=usb_storage:auto
-/devices/platform/usb20               /mnt/usb_storage/USB_DISK3     vfat      defaults        voldmanaged=usb_storage:auto
-/devices/platform/usb20               /mnt/usb_storage/USB_DISK4     vfat      defaults        voldmanaged=usb_storage:auto
-/devices/platform/usb20               /mnt/usb_storage/USB_DISK5     vfat      defaults        voldmanaged=usb_storage:auto
+/devices/virtual/mtd/mtd10/mtdblock10           auto                vfat      defaults        voldmanaged=sdcard0:auto,noemulatedsd
+/devices/platform/rk29_sdmmc.0/mmc_host/mmc     auto                vfat      defaults        voldmanaged=sdcard1:auto

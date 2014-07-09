@@ -5,7 +5,8 @@
 ro.adb.secure=0
 ro.secure=0
 ro.debuggable=1
-#persist.sys.usb.config=adb
+persist.sys.usb.config=adb
+persist.sys.root_access=3
 
 video.use.overlay=1
 ro.sf.lcd_density=160
