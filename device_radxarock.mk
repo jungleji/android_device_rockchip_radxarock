@@ -73,6 +73,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
 
+PRODUCT_COPY_FILES += \
+    device/rockchip/radxarock/media_profiles_default.xml:system/etc/media_profiles_default.xml \
+    device/rockchip/radxarock/media_codecs.xml:system/etc/media_codecs.xml \
+
 $(call inherit-product, build/target/product/full_base.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
