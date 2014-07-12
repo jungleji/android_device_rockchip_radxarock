@@ -1,8 +1,6 @@
-
 #alsa-utils
-
 TARGET_ALSAUTILS_CONF_DIR := system/usr/share/alsa/init/
-ALSAUTILS_DIR := external/alsa-utils/alsactl/init/
+ALSAUTILS_DIR := device/rockchip/radxarock/system/alsa-utils/alsactl/init/
 
 copyfile := 00main default hda help info test
 

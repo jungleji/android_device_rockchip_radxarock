@@ -1,5 +1,5 @@
 TARGET_ALSA_CONF_DIR := system/usr/share/alsa
-LOCAL_ALSA_CONF_DIR  := external/alsa-lib/src/conf
+LOCAL_ALSA_CONF_DIR  := device/rockchip/radxarock/system/alsa-lib/src/conf
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_ALSA_CONF_DIR)/alsa.conf:$(TARGET_ALSA_CONF_DIR)/alsa.conf \

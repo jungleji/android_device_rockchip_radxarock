@@ -61,6 +61,14 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.r_submix.default \
     audio.usb.default \
+    alsa.default \
+    acoustics.default \
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/asound_itv.conf:system/etc/asound.conf
+
+$(call inherit-product-if-exists, $(LOCAL_PATH)/system/alsa-lib/copy.mk)
+$(call inherit-product-if-exists, $(LOCAL_PATH)/system/alsa-utils/copy.mk)
 
 # Charger
 PRODUCT_PACKAGES += \

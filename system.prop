@@ -13,3 +13,8 @@ ro.sf.lcd_density=160
 
 wifi.interface=wlan0
 ro.lockscreen.disable.default=true
+
+persist.audio.currentplayback=9
+persist.audio.lastsocplayback=9
+persist.sys.strictmode.visual=false
+dalvik.vm.jniopts=warnonly
