@@ -10,6 +10,8 @@ persist.sys.root_access=3
 
 video.use.overlay=1
 ro.sf.lcd_density=160
+ro.sf.lcdc_composer=0
+debug.hwui.render_dirty_regions=false
 
 wifi.interface=wlan0
 ro.lockscreen.disable.default=true
@@ -18,3 +20,6 @@ persist.audio.currentplayback=9
 persist.audio.lastsocplayback=9
 persist.sys.strictmode.visual=false
 dalvik.vm.jniopts=warnonly
+
+ro.factory.without_battery=true
+ro.show.navigationbar=no

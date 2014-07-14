@@ -84,6 +84,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/rockchip/radxarock/media_profiles_default.xml:system/etc/media_profiles_default.xml \
     device/rockchip/radxarock/media_codecs.xml:system/etc/media_codecs.xml \
+    device/rockchip/radxarock/performance_info.xml:system/etc/performance_info.xml \
+    device/rockchip/radxarock/packages-compat.xml:system/etc/packages-compat.xml \
+    device/rockchip/radxarock/packages-composer.xml:system/etc/packages-composer.xml \
 
 $(call inherit-product, build/target/product/full_base.mk)
 
