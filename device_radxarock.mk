@@ -51,18 +51,42 @@ PRODUCT_COPY_FILES += \
 # HAL
 PRODUCT_PACKAGES += \
     hwcomposer.rk30board \
-    power.rk30board \
+    power.rk3188 \
 
 # Audio
 PRODUCT_PACKAGES += \
-    audio.primary.rk30board \
-    audio_policy.rk30board \
-    audio.alsa_usb.rk30board \
     audio.a2dp.default \
     audio.r_submix.default \
     audio.usb.default \
     alsa.default \
     acoustics.default \
+
+# Media proprietary libraries
+PRODUCT_PACKAGES += \
+    libvpu \
+    librk_on2 \
+    libjesancache \
+    librkwmapro \
+    libapedec \
+    libffmpegvpu \
+    libRKBluray \
+    libffmpeg_on2 \
+    libffmpeg \
+    libhevcdec \
+    libOMX_Core \
+    libomxvpu_dec \
+    libomxvpu_enc \
+    libRkOMX_Resourcemanager \
+    libstagefright_hdcp \
+    libstagefrighthw \
+    libstagefright \
+    libjpeghwenc \
+    libjpeghwdec \
+    librkswscale \
+
+# Proprietary libstagefright.so depends
+PRODUCT_PACKAGES += \
+    libconnectivitymanager \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/asound_itv.conf:system/etc/asound.conf
