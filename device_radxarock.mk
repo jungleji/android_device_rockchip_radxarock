@@ -47,6 +47,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/rockchip/radxarock/install-recovery.sh:system/bin/install-recovery.sh \
     device/rockchip/radxarock/audio_policy.conf:system/etc/audio_policy.conf \
+    device/rockchip/radxarock/rkxx-remotectl.kl:system/usr/keylayout/rkxx-remotectl.kl \
+    device/rockchip/radxarock/rk29-keypad.kl:system/usr/keylayout/rk29-keypad.kl \
 
 # HAL
 PRODUCT_PACKAGES += \
