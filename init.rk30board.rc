@@ -51,15 +51,6 @@ on post-fs
     insmod /system/lib/modules/rk30_mirroring.ko
     insmod /system/lib/modules/rk29-ipp.ko
 
-# AP6476 GPS permission
-    chmod 755 /system/bin/glgps
-    chown root system /system/bin/glgps
-    chmod 644 /system/lib/hw/gps.default.so
-    chown root system /system/lib/hw/gps.default.so
-    mkdir /data/gps
-    chmod 770 /data/gps
-    chown system net_bt_stack /data/gps
-
     mount rootfs rootfs / rw remount
 
 on post-fs-data
@@ -119,9 +110,9 @@ on boot
     symlink /mnt/media_rw/sdcard0 /mnt/sdcard
     mount rootfs rootfs / ro remount
 
-service displayd /system/bin/displayd
-    class main
-    socket displayd stream 0660 root system
+# service displayd /system/bin/displayd
+#     class main
+#     socket displayd stream 0660 root system
 
 service shutdownanim /system/bin/bootanimation -shutdown
     class main
@@ -189,31 +180,12 @@ service wfd /system/bin/wfd
     disabled
     oneshot
 
-service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
-    class main
-    disabled
-    oneshot
-
-service iprenew_wlan0 system/bin/dhcpcd -n
-    class main
-    disabled
-    oneshot
-
-service dhcpcd_p2p /system/bin/dhcpcd -aABKL
-    class main
-    disabled
-    oneshot
-
-service iprenew_p2p system/bin/dhcpcd -n
-    class main
-    disabled
-    oneshot
 # bugreport is triggered by holding down volume down, volume up and power
-service bugreport /system/bin/bugreport.sh
-    class main
-    disabled
-    oneshot
-    keycodes 114 115 116
+# service bugreport /system/bin/bugreport.sh
+#     class main
+#     disabled
+#     oneshot
+#     keycodes 114 115 116
 
 service chrome /system/bin/chrome.sh
     class main
@@ -261,11 +233,11 @@ on charger
 service charger /charger
     disabled
 
-service akmd /system/bin/akmd
-        class main
-        user system
-        group system
-        oneshot
+# service akmd /system/bin/akmd
+#         class main
+#         user system
+#         group system
+#         oneshot
 
 on property:sys.gmali.performance=ui
     start pat_ui
@@ -278,44 +250,44 @@ on property:sys.gmali.performance=video
     start pat_video
 
 #factory
-on property:ro.factory.tool=1     
-    write /sys/class/gsensor_class/orientation gsensor={-1,0,0,0,0,1,0,-1,0}
-    write /sys/devices/platform/rk29-keypad/rk29key {menu:MENU,home:HOME,vol+:VOLUP,vol-:VOLDOWN,play:PLAY,esc:ESC,sensor:CAMERA}
-    write /sys/devices/platform/rk29_backlight/rk29backlight 100
+# on property:ro.factory.tool=1
+#     write /sys/class/gsensor_class/orientation gsensor={-1,0,0,0,0,1,0,-1,0}
+#     write /sys/devices/platform/rk29-keypad/rk29key {menu:MENU,home:HOME,vol+:VOLUP,vol-:VOLDOWN,play:PLAY,esc:ESC,sensor:CAMERA}
+#     write /sys/devices/platform/rk29_backlight/rk29backlight 100
 
 service pat_video /system/bin/performance video
     disabled
     oneshot
         
-service pppoe_setup /system/bin/pppoe-setup
-    disabled
-    oneshot
+# service pppoe_setup /system/bin/pppoe-setup
+#     disabled
+#     oneshot
 
-service pppoe_start /system/bin/pppoe-start
-    disabled
-    oneshot
+# service pppoe_start /system/bin/pppoe-start
+#     disabled
+#     oneshot
     
-service bplus_helper  /system/bin/bplus_helper
-    class main
-    oneshot
+# service bplus_helper  /system/bin/bplus_helper
+#     class main
+#     oneshot
 
-service pppoe_stop /system/bin/pppoe-stop
-    disabled
-    oneshot
+# service pppoe_stop /system/bin/pppoe-stop
+#     disabled
+#     oneshot
 
-on property:ro.rk.btchip=broadcom.bplus
-    start gpsd
+# on property:ro.rk.btchip=broadcom.bplus
+#     start gpsd
 
-service gpsd  /system/bin/glgps -c /system/etc/gps/gpsconfig.xml
-    class main
-    disabled
-    user root
-    group system
+# service gpsd  /system/bin/glgps -c /system/etc/gps/gpsconfig.xml
+#     class main
+#     disabled
+#     user root
+#     group system
 
-service cifsmanager /data/etc/cifsmanager.sh
-    disabled
-    oneshot
+# service cifsmanager /data/etc/cifsmanager.sh
+#     disabled
+#     oneshot
 
-service iso_operate /data/bluray.sh
-    disabled
-    oneshot
+# service iso_operate /data/bluray.sh
+#     disabled
+#     oneshot

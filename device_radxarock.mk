@@ -106,6 +106,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
 
 PRODUCT_COPY_FILES += \
     device/rockchip/radxarock/media_profiles_default.xml:system/etc/media_profiles_default.xml \
@@ -113,6 +114,10 @@ PRODUCT_COPY_FILES += \
     device/rockchip/radxarock/performance_info.xml:system/etc/performance_info.xml \
     device/rockchip/radxarock/packages-compat.xml:system/etc/packages-compat.xml \
     device/rockchip/radxarock/packages-composer.xml:system/etc/packages-composer.xml \
+
+PRODUCT_COPY_FILES += \
+    device/rockchip/radxarock/bluetooth/realtek/bt/firmware/rtl8723au/rtk8723a:system/etc/firmware/rtk8723a \
+    device/rockchip/radxarock/bluetooth/realtek/bt/firmware/rtl8723au/rtk8723_bt_config:system/etc/firmware/rtk8723_bt_config \
 
 $(call inherit-product, build/target/product/full_base.mk)
 
