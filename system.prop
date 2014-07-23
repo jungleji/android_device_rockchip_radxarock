@@ -14,6 +14,7 @@ ro.sf.lcdc_composer=0
 debug.hwui.render_dirty_regions=false
 
 wifi.interface=wlan0
+ethernet.interface=eth0
 ro.lockscreen.disable.default=true
 ro.rk.bt_enable=true
 
