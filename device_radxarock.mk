@@ -86,10 +86,6 @@ PRODUCT_PACKAGES += \
     libjpeghwdec \
     librkswscale \
 
-# Proprietary libstagefright.so depends
-PRODUCT_PACKAGES += \
-    libconnectivitymanager \
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/asound_itv.conf:system/etc/asound.conf
 
@@ -100,6 +96,10 @@ $(call inherit-product-if-exists, $(LOCAL_PATH)/system/alsa-utils/copy.mk)
 PRODUCT_PACKAGES += \
     charger \
     charger_res_images \
+
+# Display
+PRODUCT_PACKAGES += \
+    displayd \
 
 # Permissions
 PRODUCT_COPY_FILES += \

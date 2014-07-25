@@ -5,17 +5,6 @@ import init.connectivity.rc
 
 on init
 
-loglevel 8
-
-# for adobe reader mobile
-    export RK_ADOBE_DE_MOBILE 1
-    export EBOOK_PAGE_VISIBLE_NUMBER 2
-    export RK_ADEPT_DEVICE_TYPE mobile
-    export RK_ADOBE_DE_DOC_FOLDER "/mnt/sdcard/Digital Editions"
-    export RK_ADEPT_ACTIVATION_FILE /mnt/sdcard/.adobe-digital-editions/activation.xml
-    export RK_ADEPT_DEVICE_FILE /mnt/sdcard/.adobe-digital-editions/device.xml
-    export RK_ADEPT_DEVICE_SALT_FILE /mnt/sdcard/.adobe-digital-editions/devicesalt
-    export ADOBE_FONTS_DIR  /system/fonts/adobefonts/
     export HOST_STORAGE_DIRECTORY_EXTERN_0 /mnt/usb_storage/USB_DISK0
     export HOST_STORAGE_DIRECTORY_EXTERN_1 /mnt/usb_storage/USB_DISK1
     export HOST_STORAGE_DIRECTORY_EXTERN_2 /mnt/usb_storage/USB_DISK2
@@ -72,7 +61,6 @@ on boot
     mount debugfs /sys/kernel/debug /sys/kernel/debug
     chown system system /sys/devices/system/cpu/cpu1/online
     chmod 0660 /sys/devices/system/cpu/cpu1/online
-#    insmod /system/lib/modules/vpu_service.ko
 
 #backlight
     chown system system /sys/class/backlight/rk28_bl/brightness
@@ -110,9 +98,9 @@ on boot
     symlink /mnt/media_rw/sdcard0 /mnt/sdcard
     mount rootfs rootfs / ro remount
 
-# service displayd /system/bin/displayd
-#     class main
-#     socket displayd stream 0660 root system
+service displayd /system/bin/displayd
+    class main
+    socket displayd stream 0660 root system
 
 service shutdownanim /system/bin/bootanimation -shutdown
     class main
@@ -142,39 +130,6 @@ on property:selinux.reload_policy=1
     restart ueventd
     restart installd
 
-# on property:ro.factory.hasUMS=false
-#     symlink /storage/emulated/legacy /sdcard
-#     symlink /storage/emulated/legacy /mnt/sdcard
-#     symlink /storage/emulated/legacy /storage/sdcard0
-#     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
-#     mount rootfs rootfs / ro remount
-
-# on property:ro.factory.hasUMS=cdrom
-#     symlink /storage/emulated/legacy /sdcard
-#     symlink /storage/emulated/legacy /mnt/sdcard
-#     symlink /storage/emulated/legacy /storage/sdcard0
-#     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
-#     mount rootfs rootfs / ro remount
-
-# on property:ro.factory.hasUMS=true
-#     symlink /mnt/internal_sd /sdcard
-#     symlink /mnt/internal_sd /mnt/sdcard
-#     symlink /mnt/internal_sd /storage/sdcard0
-#     mount rootfs rootfs / ro remount
-#     stop sdcard
-    
-# on property:ro.config.low_ram=true
-#     write /sys/kernel/mm/ksm/pages_to_scan 100
-#     write /sys/kernel/mm/ksm/sleep_millisecs 500
-#     write /sys/kernel/mm/ksm/run 1
-#     write /proc/sys/vm/page-cluster 0 
-
-# Binding fuse mount point to /storage/emulated/legacy
-#on property:init.svc.sdcard=running
-#    wait /mnt/shell/emulated/0
-#    mount none /mnt/shell/emulated/0 /storage/emulated/legacy bind
-
-
 service wfd /system/bin/wfd
     class main
     disabled
@@ -189,26 +144,6 @@ service wfd /system/bin/wfd
 
 service chrome /system/bin/chrome.sh
     class main
-    oneshot
-
-service dhcpcd_eth0 /system/bin/dhcpcd -ABKL
-    class main
-	disabled
-	oneshot
-			
-service iprenew_eth0 system/bin/dhcpcd -n
-    class main
-    disabled
-    oneshot
-
-service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
-    class main
-    disabled
-    oneshot
-
-service iprenew_bt-pan /system/bin/dhcpcd -n
-    class main
-    disabled
     oneshot
 
 on property:ro.boot.charger.emmc=1
@@ -233,12 +168,6 @@ on charger
 service charger /charger
     disabled
 
-# service akmd /system/bin/akmd
-#         class main
-#         user system
-#         group system
-#         oneshot
-
 on property:sys.gmali.performance=ui
     start pat_ui
 
@@ -249,45 +178,6 @@ service pat_ui /system/bin/performance ui
 on property:sys.gmali.performance=video
     start pat_video
 
-#factory
-# on property:ro.factory.tool=1
-#     write /sys/class/gsensor_class/orientation gsensor={-1,0,0,0,0,1,0,-1,0}
-#     write /sys/devices/platform/rk29-keypad/rk29key {menu:MENU,home:HOME,vol+:VOLUP,vol-:VOLDOWN,play:PLAY,esc:ESC,sensor:CAMERA}
-#     write /sys/devices/platform/rk29_backlight/rk29backlight 100
-
 service pat_video /system/bin/performance video
     disabled
     oneshot
-        
-# service pppoe_setup /system/bin/pppoe-setup
-#     disabled
-#     oneshot
-
-# service pppoe_start /system/bin/pppoe-start
-#     disabled
-#     oneshot
-    
-# service bplus_helper  /system/bin/bplus_helper
-#     class main
-#     oneshot
-
-# service pppoe_stop /system/bin/pppoe-stop
-#     disabled
-#     oneshot
-
-# on property:ro.rk.btchip=broadcom.bplus
-#     start gpsd
-
-# service gpsd  /system/bin/glgps -c /system/etc/gps/gpsconfig.xml
-#     class main
-#     disabled
-#     user root
-#     group system
-
-# service cifsmanager /data/etc/cifsmanager.sh
-#     disabled
-#     oneshot
-
-# service iso_operate /data/bluray.sh
-#     disabled
-#     oneshot

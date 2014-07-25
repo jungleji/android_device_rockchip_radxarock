@@ -13,6 +13,9 @@ ro.sf.lcd_density=160
 ro.sf.lcdc_composer=0
 debug.hwui.render_dirty_regions=false
 
+persist.sys.overscan.main=overscan 95,95,95,95
+persist.sys.overscan.aux=overscan 95,95,95,95
+
 wifi.interface=wlan0
 ethernet.interface=eth0
 ro.lockscreen.disable.default=true
