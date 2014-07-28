@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remove-project name="CyanogenMod/android_bootable_recovery"/>
+  <remove-project name="CyanogenMod/android_bootable_recovery-cm"/>
+  <remove-project name="CyanogenMod/android_build"/>
+  <remove-project name="CyanogenMod/android_device_common"/>
+  <remove-project name="CyanogenMod/android_external_bluetooth_bluedroid"/>
+  <remove-project name="CyanogenMod/android_external_chromium_org"/>
+  <remove-project name="CyanogenMod/android_external_e2fsprogs"/>
+  <remove-project name="CyanogenMod/android_external_ffmpeg"/>
+  <remove-project name="CyanogenMod/android_external_skia"/>
+  <remove-project name="CyanogenMod/android_external_stagefright-plugins"/>
+  <remove-project name="CyanogenMod/android_external_wpa_supplicant_8"/>
+  <remove-project name="CyanogenMod/android_frameworks_av"/>
+  <remove-project name="CyanogenMod/android_frameworks_base"/>
+  <remove-project name="CyanogenMod/android_frameworks_native"/>
+  <remove-project name="CyanogenMod/android_hardware_broadcom_libbt" />
+  <remove-project name="CyanogenMod/android_hardware_libhardware"/>
+  <remove-project name="CyanogenMod/android_hardware_libhardware_legacy"/>
+  <remove-project name="CyanogenMod/android_packages_apps_Bluetooth"/>
+  <remove-project name="CyanogenMod/android_packages_apps_Settings"/>
+  <remove-project name="CyanogenMod/android_system_core"/>
+
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_build" path="build">
+    <copyfile src="core/root.mk" dest="Makefile" />
+  </project>
+
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_bootable_recovery_rk" path="bootable/recovery" />
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_device_common" path="device/common" />
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_external_bluetooth_bluedroid" path="external/bluetooth/bluedroid" />
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_external_chromium_org" path="external/chromium_org" />
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_external_e2fsprogs" path="external/e2fsprogs" />
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_external_ffmpeg_rk" path="external/ffmpeg" />
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_external_skia" path="external/skia" />
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_external_wpa_supplicant_8" path="external/wpa_supplicant_8" />
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_frameworks_av" path="frameworks/av" />
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_frameworks_base" path="frameworks/base" />
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_frameworks_native" path="frameworks/native" />
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_hardware_libhardware" path="hardware/libhardware" />
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_hardware_libhardware_legacy" path="hardware/libhardware_legacy" />
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_packages_apps_Bluetooth" path="packages/apps/Bluetooth" />
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_packages_apps_Settings" path="packages/apps/Settings" />
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_system_core" path="system/core" />
+
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_hardware_realtek" path="hardware/realtek" />
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_hardware_rk29" path="hardware/rk29" />
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_kernel_rockchip_rk3188" path="kernel" />
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_device_rockchip_radxarock" path="device/rockchip/radxarock" />
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_vendor_rockchip_radxarock" path="vendor/rockchip/radxarock" />
+
+  <project remote="github" revision="radxarock-cm-11.0" name="jungleji/android_rockdev" path="rockdev">
+    <copyfile src="rockdev/mkimage.sh" dest="mkimage.sh" />
+  </project>
+</manifest>
