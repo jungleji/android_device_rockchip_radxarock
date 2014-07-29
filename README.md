@@ -14,8 +14,7 @@ Build instruction
 
     $ cd .repo
     $ mkdir local_manifests
-
-Copy local_manifests/radxarock.xml under this project to .repo/local_manifests
+    $ curl https://github.com/jungleji/android_device_rockchip_radxarock/raw/radxarock-cm-11.0/local_manifests/radxarock.xml -o local_manifests/radxarock.xml
 
 3) Sync code
 
