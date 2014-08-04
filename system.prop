@@ -12,6 +12,8 @@ video.use.overlay=1
 ro.sf.lcd_density=160
 ro.sf.lcdc_composer=0
 debug.hwui.render_dirty_regions=false
+hwui.render_dirty_regions=false
+ro.opengles.version=131072
 
 persist.sys.overscan.main=overscan 95,95,95,95
 persist.sys.overscan.aux=overscan 95,95,95,95
@@ -24,7 +26,17 @@ ro.rk.bt_enable=true
 persist.audio.currentplayback=9
 persist.audio.lastsocplayback=9
 persist.sys.strictmode.visual=false
+persist.sys.strictmode.disable=1
 dalvik.vm.jniopts=warnonly
 
 ro.factory.without_battery=true
 ro.show.navigationbar=no
+drm.service.enabled=false
+keyguard.no_require_sim=true
+
+dalvik.vm.heapstartsize=16m
+dalvik.vm.heapgrowthlimit=192m
+dalvik.vm.heapsize=512m
+dalvik.vm.heaptargetutilization=0.75
+dalvik.vm.heapminfree=512k
+dalvik.vm.heapmaxfree=8m
