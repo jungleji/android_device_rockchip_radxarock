@@ -15,8 +15,8 @@ debug.hwui.render_dirty_regions=false
 hwui.render_dirty_regions=false
 ro.opengles.version=131072
 
-persist.sys.overscan.main=overscan 95,95,95,95
-persist.sys.overscan.aux=overscan 95,95,95,95
+persist.sys.overscan.main=overscan 98,98,98,98
+persist.sys.overscan.aux=overscan 98,98,98,98
 
 wifi.interface=wlan0
 ethernet.interface=eth0

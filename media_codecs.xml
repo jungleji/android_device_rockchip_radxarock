@@ -82,7 +82,7 @@ Only the three quirks included above are recognized at this point:
         <MediaCodec name="OMX.rk.video_decoder.m2v" type="video/mpeg2" /> 
         <MediaCodec name="OMX.google.vp9.decoder" type="video/x-vnd.on2.vp9" /> 
         <MediaCodec name="OMX.rk.video_decoder.h263" type="video/3gpp" />
-	<MediaCodec name="OMX.rk.video_decoder.m4v" type="video/mp4v-es" />
+	<MediaCodec name="OMX.google.mpeg4.decoder" type="video/mp4v-es" />
 
         <MediaCodec name="OMX.google.amrnb.decoder" type="audio/3gpp" />
         <MediaCodec name="OMX.google.amrwb.decoder" type="audio/amr-wb" />
