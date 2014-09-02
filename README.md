@@ -14,7 +14,7 @@ Build instruction
 
     $ cd .repo
     $ mkdir local_manifests
-    $ curl https://github.com/jungleji/android_device_rockchip_radxarock/raw/radxarock-cm-11.0/local_manifests/radxarock.xml -o local_manifests/radxarock.xml
+    $ curl -k https://raw.githubusercontent.com/jungleji/android_device_rockchip_radxarock/radxarock-cm-11.0/local_manifests/radxarock.xml -o local_manifests/radxarock.xml
 
 3) Sync code
 
@@ -43,6 +43,15 @@ Build instruction
     $ cd ~/radxarock
     $ mka
     $ ./mkimage.sh ota
+
+Download images
+---------------
+
+The images built by me with previous steps list on github release page,
+
+<https://github.com/jungleji/android_device_rockchip_radxarock/releases>
+
+you can download these *.img.zip files and flash them to your Radxarock board.
 
 Notes
 -----
